@@ -14,9 +14,6 @@ describe('Employee', () => {
             expect(err.errors).to.exist;
         });
         }
-        after(() => {
-            mongoose.models = {};
-        });
     });
     it('should throw an error if no some args are NOT string', () => {
         const employee1 = new Employee({firstName:'John', lastName:'Connor', department:[1]});
@@ -29,17 +26,14 @@ describe('Employee', () => {
             expect(err.errors).to.exist;
         });
         }
-        after(() => {
-            mongoose.models = {};
-        });
     });
     it('should NOT throw an error if args are alright', () => {
         const employee = new Employee({firstName:'John', lastName:'Connor', department:'HR'});
         employee.validate(err => {
             expect(err).to.not.exist;
         });
-        after(() => {
-            mongoose.models = {};
-        });
+    });
+    after(() => {
+        mongoose.models = {};
     });
 });

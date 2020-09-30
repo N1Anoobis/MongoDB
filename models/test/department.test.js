@@ -8,9 +8,6 @@ describe('Department', () => {
         dep.validate(err => {
             expect(err.errors.name).to.exist;
         });
-        after(() => {
-            mongoose.models = {};
-        });
     });
     it('should throw an error if "name" is not a string', () => {
 
@@ -25,13 +22,7 @@ describe('Department', () => {
                 expect(err.errors.name).to.exist;
             });
         }
-        after(() => {
-            mongoose.models = {};
-        });
     });
-    // after(() => {
-    //     mongoose.models = {};
-    //   });
       it('should throw an error if "name" is too short or too long', () => {
 
         const cases = ['Abc', 'abcd', 'Lorem Ipsum, Lorem Ip']; // we test various cases, some of them are too short, some of them are too long
@@ -41,9 +32,6 @@ describe('Department', () => {
             expect(err.errors.name).to.exist;
           });
         }
-        after(() => {
-            mongoose.models = {};
-        });
       });
       it('should not throw an error if "name" is okay', () => {
 
@@ -56,8 +44,8 @@ describe('Department', () => {
           });
       
         }
-        after(() => {
-            mongoose.models = {};
-        });
       });
+      after(() => {
+        mongoose.models = {};
+    });
 });
