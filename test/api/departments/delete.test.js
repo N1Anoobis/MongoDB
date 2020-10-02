@@ -13,7 +13,7 @@ describe('DELETE /api/departments', () => {
         const testDepOne = new Department({ _id: '5d9f1140f10a81216cfd4408', name: 'Department #1' });
         await testDepOne.save();
       });
-    it('/ should delete document from db', async () => {
+    it('/ should delete document from db by :id ', async () => {
         const res = await request(server).delete('/api/departments/5d9f1140f10a81216cfd4408');
         const deletedDepartment = await Department.findOne({ name: '#Department #1' });
         expect(res.status).to.be.equal(200);
