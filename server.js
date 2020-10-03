@@ -20,9 +20,8 @@ app.use((req, res) => {
   res.status(404).send({ message: 'Not found...' });
 })
 
-// connects our backend code with the database
-const dbURI = process.env.NODE_ENV === 'production' ? 'url to remote db' : 'url to local db';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const dbURI = process.env.NODE_ENV === 'production' ? 'mongodb+srv://slawomir:energy2000@cluster0.rqbyt.mongodb.net/companyDB?retryWrites=true&w=majority' : 'mongodb://localhost:27017/companyDB';	
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });	mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
