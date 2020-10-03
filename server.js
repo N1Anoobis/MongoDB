@@ -21,7 +21,7 @@ app.use((req, res) => {
 })
 
 const dbURI = process.env.NODE_ENV === 'production' ? 'mongodb+srv://slawomir:energy2000@cluster0.rqbyt.mongodb.net/companyDB?retryWrites=true&w=majority' : 'mongodb://localhost:27017/companyDB';	
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });	mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
